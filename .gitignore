@@ -1,0 +1,15 @@
+# 环境与构建产物（不上传）
+.venv/
+__pycache__/
+*.py[cod]
+.idea/
+build/
+dist/
+*.spec
+
+# 与本实验无关的本地小工具：桌面提醒程序
+reminder.py
+reminders.json
+create_shortcut.ps1
+test_popup.py
+sounds/
