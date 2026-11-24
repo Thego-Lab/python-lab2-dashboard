@@ -43,10 +43,14 @@ excellent_rate = excellent_count / total_records * 100
 max_score = df["成绩"].max()
 min_score = df["成绩"].min()
 
+exam_avg = df.groupby("考试")["成绩"].mean()
+growth_diff = exam_avg["第二次月考"] - exam_avg["第一次月考"]
+growth_rate = growth_diff / exam_avg["第一次月考"] * 100
+
 col1, col2, col3, col4, col5, col6 = st.columns(6)
 col1.metric("学生总数", f"{total_students} 人")
-col2.metric("数据总条数", f"{total_records} 条")
-col3.metric("总平均分", f"{overall_avg:.1f}")
+col2.metric("总平均分", f"{overall_avg:.1f}")
+col3.metric("平均分增长率", f"{growth_rate:.1f}%", delta=f"+{growth_diff:.1f} 分")
 col4.metric("及格率", f"{pass_rate:.1f}%")
 col5.metric("优秀率(≥85)", f"{excellent_rate:.1f}%")
 col6.metric("最高分 / 最低分", f"{max_score} / {min_score}")
